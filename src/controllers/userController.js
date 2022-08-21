@@ -1,4 +1,4 @@
-const modelUsuario = require('../models/userModel')
+const modelUsuario = require('../models/userModel.json')
 
 const criarUsuario = (req, res) => {
   const { user, email, pwd } = req.body
