@@ -11,10 +11,10 @@ const ModelUsuario = require("../models/userModel");
  */
 
 const criarUsuario = async (req, res) => {
-  const { user, email, pwd } = req.body
+  const { user, email, pwd } = req.body;
 
   if (!user || !email || !pwd) {
-    return res.status(400).json({ message: "Dados inválidos" })
+    return res.status(400).json({ message: "Dados inválidos" });
   }
 
   try {
@@ -22,13 +22,12 @@ const criarUsuario = async (req, res) => {
       user: user,
       email: email,
       pwd: pwd,
-    })
+    });
 
-    const novoUsarioSave = await novoUsario.save()
-    res.status(201).json(novoUsarioSave._id)
-
+    const novoUsarioSave = await novoUsario.save();
+    res.status(201).json(novoUsarioSave._id);
   } catch (error) {
-    res.status(500).json({ message: error.message })
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -42,10 +41,10 @@ const criarUsuario = async (req, res) => {
  */
 
 const editarUsuario = async (req, res) => {
-  const id = req.params.id
+  const id = req.params.id;
 
   if (!req.body) {
-    return res.status(400).json({ message: "Dado inválido!" })
+    return res.status(400).json({ message: "Dado inválido!" });
   }
 
   try {
@@ -53,9 +52,9 @@ const editarUsuario = async (req, res) => {
       { _id: id },
       { $set: req.body },
       { new: true }
-    ).exec()
+    ).exec();
 
-    res.status(200).json({ message: "Usuario editado com sucesso!" })
+    res.status(200).json({ message: "Usuario editado com sucesso!" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -72,27 +71,44 @@ const criarEvento = async (req, res) => {
   const { id, eventos } = req.body;
 
   if (!req.body) {
-    return res.status(400).json({ message: "Dado inválido!" })
+    return res.status(400).json({ message: "Dado inválido!" });
   }
-  
+
   try {
     await ModelUsuario.findByIdAndUpdate(
       { _id: id },
-      { $push: {
-        eventos: eventos
-      } },
+      {
+        $push: {
+          eventos: eventos,
+        },
+      },
       { new: true }
-    ).exec()
+    ).exec();
 
-    res.status(200).json({ message: "Evento criado com sucesso!" })
-
-  } catch(error) {
+    res.status(200).json({ message: "Evento criado com sucesso!" });
+  } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}
+};
+
+/**
+ * Exibir eventos
+ * @return {object} Retorna eventos.
+ */
+
+const exibirEventos = async (req, res) => {
+  try {
+    const listaEventos = await ModelUsuario.find({ nomeEvento: { $exists: true } })
+
+    res.status(200).json(listaEventos);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 module.exports = {
   criarEvento,
   criarUsuario,
   editarUsuario,
-}
+  exibirEventos,
+};
