@@ -1,6 +1,6 @@
 # voluntariamos-back-end
 
-### Sobre ElasUnidas
+# Sobre ElasUnidas
 
 `ElasUnidas` foi criada por mim em 2018, quando eu estava aprendendo sobre HTML, CSS e JS.
 
@@ -132,3 +132,19 @@ O que utilizamos é o "projects" do github. Achei mais prático :smile:
 
 
 https://denim-flight-0a6.notion.site/3366393b6a7e48fbba234b295c3f0fca?v=66506de7b02f43eb8736c106fb0bc254
+
+# Hacktoberfest
+Abri o projeto para o Hacktoberfest \o/ <br>
+Escolha qualquer uma das atividades acima e mande o seu PR <br>
+O projeto já tá mais da metade da primeira fase, mas você pode colocar coisas novas, melhorar, refazer o que já foi feito... qualquer contrituição será bem-vinda!!!
+
+## 📌 Como contribuir
+
+- Fork e clone
+- Crie um branch para sua contribuição: git checkout -b minha-branch
+- Commit suas mudanças: git commit -m ‘Adicionando contribuição…’
+- Push para o branch: git push origin minha-branch
+- Envie seu pull request ❤
+
+
+Se tiver dúvida de como fazer, veja o passo a passo completo <a href="https://medium.com/@rapimentello/hacktoberfest-o-que-%C3%A9-isso-17263a334f1d">clicando aqui</a>.
