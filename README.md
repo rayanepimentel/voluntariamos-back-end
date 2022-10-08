@@ -14,6 +14,7 @@
 - E em **2022** voltamos com os encontros, mas na modalidade online💻​
 
 * 2022.v1 => **Front-end**: Vimos a base de javascript, você pode conferir [aqui](https://rayane-pimentel.gitbook.io/elasunidas-javascript/).
+
 * 2022.v2 => **Back-end**: Vamos construir o back do projeto **{ Elas Unidas - Voluntariamos }**. Utilizando Node.js e MongoDB.
 
 # 💡 Projeto
