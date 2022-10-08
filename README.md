@@ -1,5 +1,9 @@
 # { ElasUnidas - voluntariamos } 🌱 back-end
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/37915359/194683790-ebb1425c-84af-4c98-b8a6-a5e8424be779.png" width="600px">
+</p>
+
 
 # Sobre ElasUnidas
 
@@ -132,8 +136,7 @@ O que utilizamos é o "projects" do github. Achei mais prático :smile:
 * Autenticação e criptografia
 * Deploy da aplicação
 
-
-https://denim-flight-0a6.notion.site/3366393b6a7e48fbba234b295c3f0fca?v=66506de7b02f43eb8736c106fb0bc254
+[Roadmap](https://denim-flight-0a6.notion.site/3366393b6a7e48fbba234b295c3f0fca?v=66506de7b02f43eb8736c106fb0bc254)
 
 # Hacktoberfest
 Abri o projeto para o Hacktoberfest \o/ <br>
