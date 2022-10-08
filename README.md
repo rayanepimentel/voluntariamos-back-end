@@ -1,16 +1,18 @@
 # { ElasUnidas - voluntariamos } 🌱 back-end
 
+
+
 # Sobre ElasUnidas
 
 `ElasUnidas` foi criada por mim em 2018, quando eu estava aprendendo sobre HTML, CSS e JS.
 
-\-> Em **2018** os encontros aconteciam no Tendal da Lapa em São Paulo - SP, eramos todas iniciantes e tinhamos uma monitora voluntária (obrigada, Virginia💟).&#x20;
+- Em **2018** os encontros aconteciam no Tendal da Lapa em São Paulo - SP, eramos todas iniciantes e tinhamos uma monitora voluntária (obrigada, Virginia💟).&#x20;
 
-\-> Em **2019** os encontros aconteciam no SESC em São Paulo - SP.&#x20;
+- Em **2019** os encontros aconteciam no SESC em São Paulo - SP.&#x20;
 
-\-> Em **2020** e **2021** por conta da pandemia não realizamos nenhum encontro, nem online.
+- Em **2020** e **2021** por conta da pandemia não realizamos nenhum encontro, nem online.
 
-\-> E em **2022** voltamos com os encontros, mas na modalidade online💻​
+- E em **2022** voltamos com os encontros, mas na modalidade online💻​
 
 * 2022.v1 => **Front-end**: Vimos a base de javascript, você pode conferir [aqui](https://rayane-pimentel.gitbook.io/elasunidas-javascript/).
 * 2022.v2 => **Back-end**: Vamos construir o back do projeto **{ Elas Unidas - Voluntariamos }**. Utilizando Node.js e MongoDB.
