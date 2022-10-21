@@ -1,4 +1,5 @@
 const ModelUsuario = require("../models/userModel");
+const bcrypt = require("bcryptjs");
 
 /**
  * Criando uma conta
@@ -17,11 +18,13 @@ const criarUsuario = async (req, res) => {
     return res.status(400).json({ message: "Dados inválidos" });
   }
 
+  const encryptedPassword = await bcrypt.hash(pwd, 10);
+
   try {
     const novoUsario = new ModelUsuario({
       user: user,
       email: email,
-      pwd: pwd,
+      pwd: encryptedPassword,
     });
 
     const novoUsarioSave = await novoUsario.save();
@@ -45,6 +48,10 @@ const editarUsuario = async (req, res) => {
 
   if (!req.body) {
     return res.status(400).json({ message: "Dado inválido!" });
+  }
+
+  if (req.body?.pwd) {
+    req.body.pwd = await bcrypt.hash(req.body.pwd, 10);
   }
 
   try {
@@ -98,7 +105,9 @@ const criarEvento = async (req, res) => {
 
 const exibirEventos = async (req, res) => {
   try {
-    const listaEventos = await ModelUsuario.find({ nomeEvento: { $exists: true } })
+    const listaEventos = await ModelUsuario.find({
+      nomeEvento: { $exists: true },
+    });
 
     res.status(200).json(listaEventos);
   } catch (error) {
