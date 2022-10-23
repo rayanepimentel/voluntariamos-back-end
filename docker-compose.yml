@@ -1,0 +1,23 @@
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo:5.0.12
+    hostname: voluntariamos
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: passvoluntariamos
+    ports:
+      - 27017:27017
+
+# Para executar o container, execute o comando:
+# docker-compose up -d 
+# O retorno do comando será parecido com: Creating voluntariamos-back-end_mongo_1 ... done
+
+# Para obter o endereço de IP do container, execute o comando:
+# docker inspect voluntariamos-back-end_mongo_1 --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'
+# O retorno do comando será parecido com: 172.25.0.2
+
+# Copie o IP retornado no comando anterior e cole em <IPAddress_Container> no .env
+# DB_URI="mongodb://admin:passvoluntariamos@172.25.0.2:27017/?directConnection=true&retryWrites=true&w=majority"
