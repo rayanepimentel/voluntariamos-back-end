@@ -29,8 +29,7 @@ jobs:
     - name: Run Horusec
       id: run_horusec
       uses: fike/horusec-action@v0.1
-      with:
-         arguments: --config-file-path=horusec-config.json
+
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
