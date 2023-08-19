@@ -11,4 +11,4 @@ jobs:
         id: run_horusec
         uses: fike/horusec-action@v0.2.2
         with:
-          arguments: -p ./ --config-file-path=horusec-config.json -O report.txt --return-error=true
+          arguments: -c=horusec-config.json -p ./
