@@ -28,7 +28,9 @@ jobs:
         cache: 'npm'
     - name: Run Horusec
       id: run_horusec
-      uses: fike/horusec-action@v0.1
+      uses: fike/horusec-action@v0.2.2
+      with:
+        arguments: -c=horusec-config.json -p ./
 
     - run: npm ci
     - run: npm run build --if-present
