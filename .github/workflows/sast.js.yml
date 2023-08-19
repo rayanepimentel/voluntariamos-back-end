@@ -1,6 +1,4 @@
-name: Horusec Scan
-
-on: [push]
+on: pull_request
 
 jobs:
   checking_code:
@@ -8,9 +6,9 @@ jobs:
     name: Horusec Scan
     steps:
       - uses: actions/checkout@v3
-
+      
       - name: Run Horusec
         id: run_horusec
-        uses: fike/horusec-action@v0.1
+        uses: fike/horusec-action@v0.2.2
         with:
-          arguments: -c=horusec-config.json -p ./
+          arguments: -p ./ --config-file-path=horusec-config.json -O report.txt --return-error=true
