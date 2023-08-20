@@ -16,7 +16,12 @@ jobs:
           fetch-depth: 0
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_SAST }}
+      - name: Get changed files
+        run: |
+          changed_files=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }})
+          echo "::set-output name=changed_files::$changed_files"
+        id: get_changed_files
       - name: Running Horusec Security
         run: |
           curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
-          horusec start -p="./" -e="true" --disable-docker --commit="$GITHUB_SHA"
+          horusec start -p="./" -e="true" --disable-docker --files="${{ steps.get_changed_files.outputs.changed_files }}"
