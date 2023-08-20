@@ -13,6 +13,10 @@ jobs:
         fetch-depth: 1
     - name: Setup Docker
       uses: docker-practice/actions-setup-docker@v1
+    - name: Get list of changed files
+      id: get-changed-files
+      run: |
+        echo "::set-output name=files::$(git diff --name-only HEAD^ HEAD)"
     - name: Running Horusec Security
       run: |
         curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
