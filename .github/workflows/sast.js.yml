@@ -16,8 +16,7 @@ jobs:
       - name: Fetch changed files
         id: get_changed_files
         run: |
-          base_commit=$(git merge-base ${{ github.event.before }} ${{ github.sha }})
-          changed_files=$(git diff --name-only $base_commit ${{ github.sha }})
+          changed_files=$(git diff --name-only ${{ github.event.before }}..${{ github.sha }})
           echo "::set-output name=changed_files::$changed_files"
 
       - name: Run Horusec
