@@ -26,7 +26,8 @@
   "horusecCliFalsePositiveHashes": null,
   "horusecCliFilesOrPathsToIgnore": [
     "*tmp*",
-    "**/.vscode/**"
+    "**/.vscode/**",
+    "**/.exemplo.env"
   ],
   "horusecCliHeaders": {},
   "horusecCliHorusecApiUri": "http://0.0.0.0:8000",
