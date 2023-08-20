@@ -1,6 +1,8 @@
 name: Sast scan
 
 on:
+  push:
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
