@@ -29,6 +29,6 @@ jobs:
           echo "::set-output name=changed_files::$changed_files"
       - name: Run Horusec
         if: steps.get_changed_files.outputs.changed_files != ''
-        uses: fike/horusec-action@v0.2.2
-        with:
-          arguments: -c=horusec-config.json -p ${{ steps.get_changed_files.outputs.changed_files }}
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
+          horusec start --config-file-path horusec-config.json --project-path /github/workspace --files ${{ steps.get_changed_files.outputs.changed_files }}
