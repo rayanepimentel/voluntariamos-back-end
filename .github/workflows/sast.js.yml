@@ -16,12 +16,20 @@ jobs:
           fetch-depth: 0
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_SAST }}
-      - name: Get changed files
-        run: |
-          changed_files=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }})
-          echo "::set-output name=changed_files::$changed_files"
+      - name: Fetch changed files
         id: get_changed_files
-      - name: Running Horusec Security
         run: |
-          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
-          horusec start -p="./" -e="true" --disable-docker --files="${{ steps.get_changed_files.outputs.changed_files }}"
+          commit_range=$(git log --pretty=format:%H ${{ github.event.before }}..${{ github.sha }} | tac)
+          changed_files=""
+          for commit in $commit_range; do
+            files=$(git diff --name-only $commit~1 $commit)
+            changed_files="$changed_files $files"
+          done
+          changed_files=$(echo $changed_files | tr " " "\n" | sort -u)
+          echo "::set-output name=changed_files::$changed_files"
+
+      - name: Run Horusec
+        if: steps.get_changed_files.outputs.changed_files != ''
+        uses: fike/horusec-action@v0.2.2
+        with:
+          arguments: -c=horusec-config.json -p ${{ steps.get_changed_files.outputs.changed_files }}
