@@ -1,19 +1,22 @@
 name: SecurityPipeline
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   horusec-security:
     name: horusec-security
     runs-on: ubuntu-latest
     steps:
-    - name: Check out code
-      uses: actions/checkout@v2
-      with: # Necessário quando habilitado o autores de commit
-        fetch-depth: 0
-      env:
-       GITHUB_TOKEN: ${{ secrets.TOKEN_SAST }}
-    - name: Running Horusec Security
-      run: |
-        curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
-        horusec start -p="./" -e="true" --disable-docker  
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_SAST }}
+      - name: Running Horusec Security
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
+          horusec start -p="./" -e="true" --disable-docker --commit="$GITHUB_SHA"
