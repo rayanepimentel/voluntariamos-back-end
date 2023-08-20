@@ -55,11 +55,11 @@ const editarUsuario = async (req, res) => {
   }
 
   try {
-    await ModelUsuario.findByIdAndUpdate(
+   eval(`await ModelUsuario.findByIdAndUpdate(
       { _id: id },
       { $set: req.body },
       { new: true }
-    ).exec();
+    ).exec();`);
 
     res.status(200).json({ message: "Usuario editado com sucesso!" });
   } catch (error) {
