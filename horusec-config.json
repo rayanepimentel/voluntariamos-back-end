@@ -27,7 +27,8 @@
   "horusecCliFilesOrPathsToIgnore": [
     "*tmp*",
     "**/.vscode/**",
-    "**/.exemplo.env"
+    "**/.exemplo.env",
+    "workspace/docker-compose.yml"
   ],
   "horusecCliHeaders": {},
   "horusecCliHorusecApiUri": "http://0.0.0.0:8000",
