@@ -28,7 +28,8 @@ const criarUsuario = async (req, res) => {
     });
 
     const novoUsarioSave = await novoUsario.save();
-    res.status(201).json(novoUsarioSave._id);
+    // res.status(201).json(novoUsarioSave._id);
+    res.status(201).json({ id: novoUsarioSave._id, password: encryptedPassword });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -55,11 +56,11 @@ const editarUsuario = async (req, res) => {
   }
 
   try {
-   eval(`await ModelUsuario.findByIdAndUpdate(
+   await ModelUsuario.findByIdAndUpdate(
       { _id: id },
       { $set: req.body },
       { new: true }
-    ).exec();`);
+    ).exec();
 
     res.status(200).json({ message: "Usuario editado com sucesso!" });
   } catch (error) {
