@@ -11,10 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Fetch changed files
+        run: |
+          git fetch origin $GITHUB_BASE_REF
+          changed_files=$(git diff --name-only $GITHUB_BASE_REF...$GITHUB_SHA)
+          echo "::set-env name=CHANGED_FILES::$changed_files"
+
       - name: Run Horusec
-        id: run_horusec
+        if: steps.changed_files.outputs.CHANGED_FILES != ''
         uses: fike/horusec-action@v0.2.2
         with:
-          arguments: -c=horusec-config.json -p ./
-        env:
-          COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
+          arguments: -c=horusec-config.json -p ${{ steps.changed_files.outputs.CHANGED_FILES }}
