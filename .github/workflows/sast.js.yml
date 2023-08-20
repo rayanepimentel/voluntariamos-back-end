@@ -12,11 +12,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - name: Fetch changed files
         id: get_changed_files
         run: |
-          changed_files=$(git diff --name-only ${{ github.event.before }}..${{ github.sha }})
+          commit_range=$(git log --pretty=format:%H ${{ github.event.before }}..${{ github.sha }} | tac)
+          changed_files=""
+          for commit in $commit_range; do
+            files=$(git diff --name-only $commit~1 $commit)
+            changed_files="$changed_files $files"
+          done
+          changed_files=$(echo $changed_files | tr " " "\n" | sort -u)
           echo "::set-output name=changed_files::$changed_files"
 
       - name: Run Horusec
