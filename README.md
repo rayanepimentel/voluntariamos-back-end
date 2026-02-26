@@ -155,4 +155,3 @@ O projeto já tá mais da metade da primeira fase, mas você pode colocar coisas
 Se tiver dúvida de como fazer, veja o passo a passo completo <a href="https://medium.com/@rapimentello/hacktoberfest-o-que-%C3%A9-isso-17263a334f1d">clicando aqui</a>.
 
 
-<p>Teste</p>
