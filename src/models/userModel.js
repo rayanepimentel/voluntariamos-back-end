@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const eventoSchema = {
-  
+
   nomeEvento: String,
 
   tipo: String,
@@ -20,13 +20,13 @@ const eventoSchema = {
   linkInscricao: String,
 
   label: String
-  
+
 }
 
 const usuarioSchema = new mongoose.Schema({
 
   _id: {
-    type: mongoose.Types.ObjectId,
+    type: mongoose.Types.ObjectId, 
     default: mongoose.Types.ObjectId
   },
 
